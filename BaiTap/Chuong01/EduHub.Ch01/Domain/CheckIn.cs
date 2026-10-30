@@ -33,7 +33,7 @@ public sealed class CheckIn
     /// <returns>A check-in record with a generated identifier.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="registration"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentException"><paramref name="method"/> is unsupported.</exception>
-    /// <exception cref="InvalidOperationException">The registration is not confirmed.</exception>
+    /// <exception cref="InvalidOperationException">The registration is not confirmed or already has a check-in.</exception>
     public static CheckIn Create(Registration registration, string method)
     {
         ArgumentNullException.ThrowIfNull(registration);
@@ -43,12 +43,19 @@ public sealed class CheckIn
             throw new InvalidOperationException("Only confirmed registrations can check in.");
         }
 
+        if (registration.CheckIn is not null)
+        {
+            throw new InvalidOperationException("This registration already has a check-in.");
+        }
+
         if (method is not CheckInMethod.Manual and not CheckInMethod.QrCode)
         {
             throw new ArgumentException("The check-in method is unsupported.", nameof(method));
         }
 
-        return new CheckIn(Guid.NewGuid(), registration.Id, DateTime.UtcNow, method);
+        var checkIn = new CheckIn(Guid.NewGuid(), registration.Id, DateTime.UtcNow, method);
+        registration.AttachCheckIn(checkIn);
+        return checkIn;
     }
 
     /// <summary>

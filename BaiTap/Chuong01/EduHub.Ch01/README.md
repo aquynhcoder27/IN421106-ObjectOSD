@@ -12,8 +12,8 @@ Trạng thái đăng ký dùng các hằng Pending, Confirmed, Cancelled; hình 
 
 Cần .NET 10 SDK.
 
-    dotnet build EduHub.Ch01.csproj
-    dotnet run --project EduHub.Ch01.csproj
+    dotnet build BaiTap/Chuong01/EduHub.Ch01/EduHub.Ch01.csproj
+    dotnet run --project BaiTap/Chuong01/EduHub.Ch01/EduHub.Ch01.csproj
 
 ## Kết quả chạy
 

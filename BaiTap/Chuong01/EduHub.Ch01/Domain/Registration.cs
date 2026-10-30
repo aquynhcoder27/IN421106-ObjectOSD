@@ -29,6 +29,9 @@ public sealed class Registration
     /// <summary>Gets the current registration status.</summary>
     public string Status { get; private set; }
 
+    /// <summary>Gets the optional check-in associated with this registration.</summary>
+    public CheckIn? CheckIn { get; private set; }
+
     /// <summary>
     /// Creates a pending registration for a member and event.
     /// </summary>
@@ -77,5 +80,17 @@ public sealed class Registration
         }
 
         Status = RegistrationStatus.Cancelled;
+    }
+
+    internal void AttachCheckIn(CheckIn checkIn)
+    {
+        ArgumentNullException.ThrowIfNull(checkIn);
+
+        if (CheckIn is not null)
+        {
+            throw new InvalidOperationException("This registration already has a check-in.");
+        }
+
+        CheckIn = checkIn;
     }
 }

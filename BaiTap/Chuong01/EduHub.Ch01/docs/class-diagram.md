@@ -42,6 +42,7 @@ classDiagram
         +Guid EventId
         +DateTime RegisteredAt
         +string Status
+        +CheckIn? CheckIn
         +Create(memberId, eventId) Registration
         +Confirm() void
         +Cancel() void
