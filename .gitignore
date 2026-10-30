@@ -1,2 +1,10 @@
 BaiGiang/
 AGENTS.md
+
+# Build output and IDE-local files
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
