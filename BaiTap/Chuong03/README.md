@@ -24,3 +24,9 @@ Trong môi trường Development, Swagger UI có tại `http://localhost:5000/sw
 | DELETE | `/api/clubs/{id}` | `204 No Content` hoặc `404 Not Found` |
 
 Tên CLB bắt buộc và tối đa 50 ký tự. Bộ test Application dùng Moq. Có thể lưu ảnh kết quả test và Swagger UI trong `docs/` để đính kèm PR.
+
+## Minh chứng
+
+Swagger UI chạy tại `http://localhost:5000/swagger`:
+
+![Swagger UI của EduHub API](docs/swagger-ui.png)
