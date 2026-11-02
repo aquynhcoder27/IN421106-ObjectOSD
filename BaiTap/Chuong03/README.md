@@ -30,3 +30,7 @@ Tên CLB bắt buộc và tối đa 50 ký tự. Bộ test Application dùng Moq
 Swagger UI chạy tại `http://localhost:5000/swagger`:
 
 ![Swagger UI của EduHub API](docs/swagger-ui.png)
+
+Kết quả chạy `dotnet test BaiTap/Chuong03/EduHub.sln`:
+
+![Năm test Chương 3 đều thành công](docs/dotnet-test.png)
