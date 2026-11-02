@@ -18,6 +18,19 @@ public class DomainTests
         Assert.NotEqual(Guid.Empty, club.Id);
     }
 
+    [Fact]
+    public void ClubCreate_WithNameAtMaximumLength_ReturnsClub()
+    {
+        // Arrange
+        var name = new string('x', Club.MaxNameLength);
+
+        // Act
+        var club = Club.Create(name, "Description");
+
+        // Assert
+        Assert.Equal(Club.MaxNameLength, club.Name.Length);
+    }
+
     [Theory]
     [InlineData("")]
     [InlineData("   ")]
